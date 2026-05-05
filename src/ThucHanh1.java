@@ -22,49 +22,75 @@
 //        Điểm TB: ...
 //        Xếp loại: ...
 
+//Viết menu cho bài SinhVien:
+//
+//        1 → nhập thông tin
+//        2 → in ra thông tin
+//        0 → thoát
+
 import java.util.Scanner;
 
 public class ThucHanh1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String SinhVien;
-        double DiemToan;
-        double DiemLy;
-        double DiemHoa;
-        double tinhDiemTB;
-        String XepLoai;
+        // Khai báo biến bên ngoài để các case đều dùng được
+        String ten = "";
+        double toan = 0, ly = 0, hoa = 0, trungBinh = 0;
+        String xepLoai = "";
+        int choice;
 
-        System.out.print("Nhập tên sinh viên: ");
-        SinhVien = scanner.nextLine();
+        do {
+            System.out.println("\n--- MENU QUẢN LÝ ---");
+            System.out.println("1. Nhập thông tin sinh viên");
+            System.out.println("2. In ra thông tin & Xếp loại");
+            System.out.println("0. Thoát");
+            System.out.print("Lựa chọn của bạn: ");
 
-        System.out.print("Nhập điểm toán: ");
-        DiemToan = scanner.nextDouble();
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Xử lý trôi lệnh
 
-        System.out.print("Nhập điểm lý: ");
-        DiemLy = scanner.nextDouble();
+            switch (choice) {
+                case 1:
+                    System.out.print("Nhập tên sinh viên: ");
+                    ten = scanner.nextLine();
+                    System.out.print("Nhập điểm Toán: ");
+                    toan = scanner.nextDouble();
+                    System.out.print("Nhập điểm Lý: ");
+                    ly = scanner.nextDouble();
+                    System.out.print("Nhập điểm Hóa: ");
+                    hoa = scanner.nextDouble();
 
-        System.out.print("Nhập điểm hoá: ");
-        DiemHoa = scanner.nextDouble();
+                    // Tính toán ngay sau khi nhập
+                    trungBinh = (toan + ly + hoa) / 3;
 
-        tinhDiemTB = (DiemToan + DiemLy + DiemHoa) / 3;
+                    if (trungBinh >= 8) xepLoai = "Giỏi";
+                    else if (trungBinh >= 6.5) xepLoai = "Khá";
+                    else if (trungBinh >= 5) xepLoai = "Trung bình";
+                    else xepLoai = "Yếu";
 
-        if (tinhDiemTB >= 8){
-            XepLoai = "Giỏi";
-        }
-        else if (tinhDiemTB >= 6.5 ){
-            XepLoai = "Khá";
-        }
-        else if (tinhDiemTB >= 5) {
-            XepLoai = "Trung bình";
-        }
-        else {
-            XepLoai = "Yếu";
-        }
+                    System.out.println("=> Đã lưu dữ liệu thành công!");
+                    break;
 
-        System.out.println("Tên: " + SinhVien);
-        System.out.println("Điểm TB: " + tinhDiemTB);
-        System.out.println("Xếp loại: " + XepLoai);
+                case 2:
+                    if (ten.equals("")) {
+                        System.out.println("Chưa có dữ liệu! Vui lòng chọn 1 để nhập.");
+                    } else {
+                        System.out.println("\n--- KẾT QUẢ ---");
+                        System.out.println("Tên: " + ten);
+                        System.out.printf("Điểm trung bình: %.2f\n", trungBinh);
+                        System.out.println("Xếp loại: " + xepLoai);
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Đang thoát...");
+                    break;
+
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+            }
+        } while (choice != 0);
 
         scanner.close();
     }
