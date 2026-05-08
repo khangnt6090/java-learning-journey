@@ -1,0 +1,43 @@
+Bài tập OOP: Tạo đối tượng Con Chó
+🎯 Yêu cầu:
+
+Tạo class Dog
+
+📌 Thuộc tính:
+
+Con chó có:
+
+name (tên)
+age (tuổi)
+📌 Hành động (method):
+
+Con chó có thể:
+
+bark() → in:
+Gau gau!
+eat() → in:
+Dang an...
+showInfo() → in thông tin:
+Ten: Muc
+Tuoi: 3
+📌 Trong main
+Tạo object chó:
+Dog dog1 = new Dog();
+Gán dữ liệu:
+dog1.name = "Muc";
+dog1.age = 3;
+Gọi method:
+dog1.bark();
+dog1.eat();
+dog1.showInfo();
+🔥 Output ví dụ:
+Gau gau!
+Dang an...
+Ten: Muc
+Tuoi: 3
+⚠️ Điều kiện:
+Viết tất cả trong 1 file Java
+Phải có:
+class
+object
+method
